@@ -1,5 +1,14 @@
-const amIFat = null;
+const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
 
-let something;
+// Get Item from Array
+console.log(daysOfWeek);
 
-console.log(something, amIFat)
+// Add one more day to the array
+daysOfWeek.push("sum");
+
+console.log(daysOfWeek);
+
+const toBuy = ["potato", "tomato", "pizza"];
+toBuy.push("kimbab");
+
+console.log(toBuy);
