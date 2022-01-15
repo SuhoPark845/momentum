@@ -1,14 +1,23 @@
-const daysOfWeek = ["mon", "tue", "wed", "thu", "fri", "sat"];
+const body = document.body;
 
-// Get Item from Array
-console.log(daysOfWeek);
+const BIG_SCREEN = "bigScreen";
+const MEDIUM_SCREEN = "mediumScreen";
+const SMALL_SCREEN = "smallScreen";
 
-// Add one more day to the array
-daysOfWeek.push("sum");
+function handlerResize() {
+  const width = window.innerWidth;
 
-console.log(daysOfWeek);
+  // console.log(width);
+  if (width > 1000) {
+    body.classList.add(BIG_SCREEN);
+    body.classList.remove(MEDIUM_SCREEN);
+  } else if (width <= 1140 && width >= 700) {
+    body.classList.add(MEDIUM_SCREEN);
+    body.classList.remove(BIG_SCREEN, SMALL_SCREEN);
+  } else {
+    body.classList.add(SMALL_SCREEN);
+    body.classList.remove(MEDIUM_SCREEN);
+  }
+}
 
-const toBuy = ["potato", "tomato", "pizza"];
-toBuy.push("kimbab");
-
-console.log(toBuy);
+window.addEventListener("resize", handlerResize);
