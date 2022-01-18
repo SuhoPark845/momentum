@@ -8,16 +8,20 @@
     <title>Momentum</title>
   </head>
   <body>
-    <form class="hidden" id="login-form">
-      <input
-        required
-        maxlength="15"
-        type="text"
-        placeholder="What is yout name?"
-      />
-      <input type="submit" value="Log In" />
+    <h1>Random Number Game</h1>
+    <form id="numberGuessingGame">
+      <div>
+        <h2 style="display: inline">Generate a number between 0 and </h2>
+        <input id="maxNumber" type="number" min="0" />
+      </div>
+      <div style="padding-top: 28px;">
+        <h3 style="display: inline;">Guess the number: </h2>
+          <input id="answerNumber" type="number" min="0" />
+          <input type="submit" min="0" value="Play!">
+      </div>
     </form>
-    <h1 class="hidden" id="greeting"></h1>
+    <h3 id="gameGuide"></h3>
+    <h3 id="gameResult"></h3>
     <script src="app.js"></script>
   </body>
 </html>

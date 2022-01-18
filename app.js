@@ -1,28 +1,29 @@
-const loginForm = document.querySelector("#login-form");
-const loginInput = document.querySelector("#login-form input");
-const greeting = document.querySelector("#greeting");
+const numberGuessingGame = document.querySelector("#numberGuessingGame");
+const maxNumber = document.querySelector("#maxNumber");
+const answerNumber = document.querySelector("#answerNumber");
+const gameGuide = document.querySelector("#gameGuide");
+const gameResult = document.querySelector("#gameResult");
 
-const HIDDEN_CLASSNAME = "hidden";
-const USERNAME_KEY = "username";
-
-function paintGreetings(username) {
-  greeting.innerText = `Hello ${username}`;
-  greeting.classList.remove(HIDDEN_CLASSNAME);
-}
-
-function onLoginSubmit(event) {
+function startGame(event) {
   event.preventDefault();
-  loginForm.classList.add(HIDDEN_CLASSNAME);
-  const username = loginInput.value;
-  localStorage.setItem(USERNAME_KEY, username);
-  paintGreetings(username);
+  const maxNumberChosenByUser = parseInt(maxNumber.value);
+  const answerNumberChosenByUser = parseInt(answerNumber.value);
+  const randomNumber = Math.floor(Math.random() * maxNumberChosenByUser);
+
+  console.log(maxNumberChosenByUser);
+  console.log(answerNumberChosenByUser);
+  console.log(randomNumber);
+
+  if (isNaN(maxNumberChosenByUser) || isNaN(answerNumberChosenByUser)) {
+    gameGuide.innerText = "You have to enter correct number!";
+  } else {
+    gameGuide.innerText = `You chose: ${answerNumberChosenByUser}, the machine chose: ${randomNumber}`;
+    if (randomNumber === answerNumberChosenByUser) {
+      gameResult.innerText = "You win!";
+    } else {
+      gameResult.innerText = "You lost!";
+    }
+  }
 }
 
-const savedUsername = localStorage.getItem(USERNAME_KEY);
-
-if (savedUsername === null) {
-  loginForm.classList.remove(HIDDEN_CLASSNAME);
-  loginForm.addEventListener("submit", onLoginSubmit);
-} else {
-  paintGreetings(savedUsername);
-}
+numberGuessingGame.addEventListener("submit", startGame);
