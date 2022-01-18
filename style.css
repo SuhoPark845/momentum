@@ -1,15 +1,3 @@
-body {
-  background-color: beige;
-}
-
-.bigScreen {
-  background-color: aqua;
-}
-
-.mediumScreen {
-  background-color: brown;
-}
-
-.smallScreen {
-  background-color: coral;
+.hidden {
+  display: none;
 }

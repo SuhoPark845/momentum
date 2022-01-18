@@ -1,23 +1,28 @@
-const body = document.body;
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
 
-const BIG_SCREEN = "bigScreen";
-const MEDIUM_SCREEN = "mediumScreen";
-const SMALL_SCREEN = "smallScreen";
+const HIDDEN_CLASSNAME = "hidden";
+const USERNAME_KEY = "username";
 
-function handlerResize() {
-  const width = window.innerWidth;
-
-  // console.log(width);
-  if (width > 1000) {
-    body.classList.add(BIG_SCREEN);
-    body.classList.remove(MEDIUM_SCREEN);
-  } else if (width <= 1140 && width >= 700) {
-    body.classList.add(MEDIUM_SCREEN);
-    body.classList.remove(BIG_SCREEN, SMALL_SCREEN);
-  } else {
-    body.classList.add(SMALL_SCREEN);
-    body.classList.remove(MEDIUM_SCREEN);
-  }
+function paintGreetings(username) {
+  greeting.innerText = `Hello ${username}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-window.addEventListener("resize", handlerResize);
+function onLoginSubmit(event) {
+  event.preventDefault();
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  const username = loginInput.value;
+  localStorage.setItem(USERNAME_KEY, username);
+  paintGreetings(username);
+}
+
+const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+if (savedUsername === null) {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener("submit", onLoginSubmit);
+} else {
+  paintGreetings(savedUsername);
+}
