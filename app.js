@@ -6,8 +6,8 @@ const gameResult = document.querySelector("#gameResult");
 
 function startGame(event) {
   event.preventDefault();
-  const maxNumberChosenByUser = parseInt(maxNumber.value);
-  const answerNumberChosenByUser = parseInt(answerNumber.value);
+  const maxNumberChosenByUser = parseInt(maxNumber.value, 10);
+  const answerNumberChosenByUser = parseInt(answerNumber.value, 10);
   const randomNumber = Math.floor(Math.random() * maxNumberChosenByUser);
 
   console.log(maxNumberChosenByUser);
