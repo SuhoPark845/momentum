@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+    <title>JS Casino</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Momentum</title>
   </head>
+
   <body>
     <h1>Random Number Game</h1>
-    <form id="numberGuessingGame">
-      <div>
-        <h2 style="display: inline">Generate a number between 0 and </h2>
-        <input id="maxNumber" type="number" min="0" />
-      </div>
-      <div style="padding-top: 28px;">
-        <h3 style="display: inline;">Guess the number: </h2>
-          <input id="answerNumber" type="number" min="0" />
-          <input type="submit" min="0" value="Play!">
-      </div>
+    <div>
+      <h3 class="js-title">
+        Generate a number between 0 and <input id="maxNumber" type="number" />
+      </h3>
+    </div>
+    <form id="js-guess">
+      <label>Guess the number:</label>
+      <input type="number" max="200" min="5" />
+      <button>Play!</button>
     </form>
-    <h3 id="gameGuide"></h3>
-    <h3 id="gameResult"></h3>
-    <script src="app.js"></script>
+    <div id="js-result">
+      <span></span>
+    </div>
+    <script src="src/index.js"></script>
   </body>
 </html>
