@@ -1,40 +1,23 @@
-const clock = document.querySelector("h2#clock");
+const clockTitle = document.querySelector(".js-clock");
 
-function getTimeUntilChristmas() {
-  const date = new Date();
-  const thisYear = date.getFullYear();
-
-  const christmasDate = new Date(`${thisYear}-12-25 00:00:00`);
-
-  const nowDate = new Date();
-  const diffDate = christmasDate - nowDate;
-
-  const millisecondsOfOneDay = 24 * 60 * 60 * 1000;
-  const millisecondsOfOneHour = 60 * 60 * 1000;
-  const millisecondsOfOneMinute = 60 * 1000;
-  const millisecondsOfOneSecond = 1000;
-
-  let diffDay = Math.floor(diffDate / millisecondsOfOneDay);
-  let remainingTimeForToday = diffDate - diffDay * millisecondsOfOneDay;
-
-  let diffHour = Math.floor(remainingTimeForToday / millisecondsOfOneHour);
-  remainingTimeForToday =
-    remainingTimeForToday - diffHour * millisecondsOfOneHour;
-
-  let diffMinute = Math.floor(remainingTimeForToday / millisecondsOfOneMinute);
-  remainingTimeForToday =
-    remainingTimeForToday - diffMinute * millisecondsOfOneMinute;
-
-  let diffSecond = Math.floor(remainingTimeForToday / millisecondsOfOneSecond);
-  remainingTimeForToday =
-    remainingTimeForToday - diffSecond * millisecondsOfOneSecond;
-
-  diffDay = String(diffDay).padStart(3, "0");
-  diffHour = String(diffHour).padStart(2, "0");
-  diffMinute = String(diffMinute).padStart(2, "0");
-  diffSecond = String(diffSecond).padStart(2, "0");
-  clock.innerText = `${diffDay}d ${diffHour}h ${diffMinute}m ${diffSecond}s`;
+function getTime() {
+  const xmasDay = new Date(`${new Date().getFullYear()}-12-25:00:00:00+0900`);
+  const now = new Date();
+  // This is in milisecondsx
+  const difference = new Date(xmasDay - now);
+  const secondsInMs = Math.floor(difference / 1000);
+  const minutesInMs = Math.floor(secondsInMs / 60);
+  const hoursInMs = Math.floor(minutesInMs / 60);
+  const days = Math.floor(hoursInMs / 24);
+  const seconds = secondsInMs % 60;
+  const minutes = minutesInMs % 60;
+  const hours = hoursInMs % 24;
+  const daysStr = `${days < 10 ? `0${days}` : days}d`;
+  const hoursStr = `${hours < 10 ? `0${hours}` : hours}h`;
+  const minutesStr = `${minutes < 10 ? `0${minutes}` : minutes}m `;
+  const secondsStr = `${seconds < 10 ? `0${seconds}` : seconds}s`;
+  clockTitle.innerHTML = `${daysStr} ${hoursStr} ${minutesStr} ${secondsStr}`;
 }
 
-getTimeUntilChristmas();
-setInterval(getTimeUntilChristmas, 1000);
+getTime();
+setInterval(getTime, 1000);
