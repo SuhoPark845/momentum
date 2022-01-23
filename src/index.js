@@ -19,19 +19,15 @@ const colors = [
   "#ff3f34",
 ];
 
-function changeBackgroundColor() {
-  const leftColor = colors[Math.floor(Math.random() * colors.length)];
-  let RightColor;
-  while (true) {
-    RightColor = colors[Math.floor(Math.random() * colors.length)];
-    if (leftColor !== RightColor) {
-      break;
-    }
-  }
+const btn = document.querySelector("button");
 
-  document.body.style.background = `linear-gradient(to right, ${leftColor}, ${RightColor})`;
+function handleClick() {
+  const a = colors[Math.floor(Math.random() * colors.length)];
+  const b = colors[Math.floor(Math.random() * colors.length)];
+  if (a === b) {
+    return handleClick();
+  }
+  document.body.style.background = `linear-gradient(to left, ${a}, ${b})`;
 }
 
-const button = document.querySelector("button");
-
-button.addEventListener("click", changeBackgroundColor);
+btn.addEventListener("click", handleClick);
