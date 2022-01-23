@@ -18,3 +18,46 @@
   background-color: skyblue;
   color: white;
 }
+
+body {
+  background-size: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+h2#clock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 300px;
+  color: darkkhaki;
+  font-size: 5em;
+}
+
+#greeting {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -60px;
+  color: darkkhaki;
+}
+
+#todo-form {
+  display: flex;
+  justify-content: center;
+}
+
+#todo-list {
+  display: table;
+  margin-left: auto;
+  margin-right: auto;
+  color: darkkhaki;
+}
+
+#weather {
+  margin-top: -50px;
+  float: right;
+  color: darkkhaki;
+}
